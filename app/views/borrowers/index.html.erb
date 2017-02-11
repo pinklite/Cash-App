@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<div class="center">
+  <div class="row">
+    <% @borrowers.each do |borrower| %>
+        <div class="col-sm-3">
+          <div class="card">
+            <div class="card-block">
+              <h3 class="card-title"><%= borrower.name %></h3>
+              <p class="card-text"><%= borrower.memo %></p>
+              <h4><%= number_to_currency(borrower.price) %></h4>
+              <span><%= link_to 'Show', borrower, class: "btn btn-secondary" %></span>
+              <span><%= link_to 'Edit', edit_borrower_path(borrower), class: "btn btn-link" %></span>
+              <span><%= link_to 'Destroy', borrower, method: :delete, data: { confirm: 'Are you sure?' },
+                                class: "btn btn-secondary " %></span>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Borrower', new_borrower_path, class: "btn btn-link" %>
